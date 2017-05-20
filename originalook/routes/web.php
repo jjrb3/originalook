@@ -105,6 +105,7 @@ Route::get('administrador/inicio', function (Request $request) {
     return view('administrador.inicio',[
     	'nombreUsuario' => $request->session()->get('nombre'),
     	'rutaImagen' => $request->session()->get('rutaImagen'),
+        'idRol' => $request->session()->get('idRol'),
     	]);
 });
 

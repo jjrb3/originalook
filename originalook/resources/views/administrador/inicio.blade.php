@@ -350,6 +350,10 @@
 
         <li class="treeview"><a href="inicio"><i class="fa fa-dashboard"></i> <span>Inicio</span></a></li>
 
+        @if($idRol == 3)
+            <li class="treeview"><a href="empleados"><i class="fa fa-dashboard"></i> <span>Empleados</span></a></li>
+        @endif
+
         <li class="treeview"><a href="perfil"><i class="fa fa-user "></i><span>Mi Perfil</span></a></li>
 
         <li><a href="servicios"><i class="fa fa-th"></i> <span>Mis Servicios</span></a></li>
