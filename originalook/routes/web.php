@@ -175,6 +175,7 @@ Route::post('administrador/servicios/guardarActualizacion','ServiciosController@
 // Portafolio
 Route::get('administrador/portafolio','PortafolioController@ConsultarPortafolio');
 Route::post('administrador/portafolio/guardarImagen','PortafolioController@guardarImagen');
+Route::post('administrador/portafolio/borrar','PortafolioController@borrar');
 // Fin de Portafolio
 
 

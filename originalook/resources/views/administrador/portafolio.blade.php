@@ -15,7 +15,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <title>Originalook</title>
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
   <!-- Tell the browser to be responsive to screen width -->
 
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -418,12 +418,15 @@
 
  @if(count($imagen) > 0)
 	@foreach($imagen as $lista)
-	<div class="col-xs-3">
+	<div class="col-xs-3" align="center">
 		<a href="#" class="thumbnail">
 			<img src="{{asset('recursos/imagen_portafolio')}}/{{$lista['url']}}" class="img-circle" alt="User Image">
+			<button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" onclick="idEliminar({{$lista['id']}})">
+				<span class="glyphicon glyphicon-trash"></span>
+			</button>
 		</a>
 	</div>
-  	@endforeach
+	@endforeach
 @endif
 
 
@@ -441,198 +444,99 @@
 	</div>
 
 	</div>
-	  <!-- /.row -->
+    <!-- STIDS JEAL -->
+        @php($error = isset($_REQUEST['error']) ? isset($_REQUEST['error']) : 0)
+        @php($mensajeEliminar = isset($_REQUEST['mensajeEliminar']) ? isset($_REQUEST['mensajeEliminar']) : 0)
 
+        @if ($error == 3)
+             <div class="alert alert-dismissable alert-warning">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <i class="glyphicon glyphicon-exclamation-sign" style="font-size: 20px"></i>&nbsp;&nbsp;&nbsp;
+                    Llegó al tope de las imagenes que puede subir
+            </div>
+        @endif
+        @if ($mensajeEliminar == true)
+             <div class="alert alert-dismissable alert-success">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <i class="glyphicon glyphicon-ok-sign" style="font-size: 20px"></i>&nbsp;&nbsp;&nbsp;
+                    Se eliminó la imagen correctamente
+            </div>
+        @endif
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-primary">
+                    <div class="box-body no-padding">
+                        <div class="page-section" id="contact">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <center>
+                                        <h4 class="widget-title">Mis Imagenes Originalook</h4>
+                                        <p>Sube tus imagenes para que los usuarios puedan ver tu trabajo.</p>
+                                    </center>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-11">
+                                    <div class="table-responsive">
 
-
-<div class="row">
-
-<!-- /.col -->
-
-<div class="col-md-12">
-
-<div class="box box-primary">
-
-<div class="box-body no-padding">
-
-<!-- THE CALENDAR -->
-
-<!-- CONTACT -->
-
-<div class="page-section" id="contact">
-
-<div class="row">
-
-<div class="col-md-12">
-
-<center> <h4 class="widget-title">Mis Imagenes Originalook</h4>
-
-<p>Sube tus imagenes para que los usuarios puedan ver tu trabajo.</p></center>
-
-
-</div>
-
-</div>
-
-</div>
-
-
-<div class="container">
-<div class="row">
-
-
-<div class="col-md-12">
-
-<div class="table-responsive">
-
-
-<table id="mytable" class="table table-bordred table-striped">
-
-<thead>
-
-
-<th>#</th>
-<th>perfil</th>
-<th>Estado</th>
-<th>Aceptado</th>
-<th>Saldo de cuenta</th>
-<th>Fecha de creacion</th>
-<th>Decha de actualización</th>
-<th>Edit</th>
-<th>Delete</th>
-</thead>
-<tbody>
-
-@if(count($profesonales) > 0)
-	@php($cnt = 0)
-	@foreach($profesonales as $profesional)
-		@php($cnt++)
-		<tr>
-			<td>{{$cnt}}</td>
-			<td>{{$profesional['perfil']}}</td>
-			<td>
-				@if($profesional['estado'] == 1)
-					Activo
-				@else
-					Inactivo
-				@endif
-			</td>
-			<td>
-				@if($profesional['aceptado'] == 1)
-					Sí
-				@else
-					No
-				@endif
-			</td>
-			<td>${{number_format($profesional['saldo_de_cuenta'])}}</td>
-			<td>{{$profesional['fecha_creacion']}}</td>
-			<td>{{$profesional['fecha_modificacion']}}</td>
-			<td>
-				<p data-placement="top" data-toggle="tooltip" title="Edit">
-					<button class="btn btn-primary btn-xs" onclick="asignarId({{$profesional['id']}})" data-title="Edit" data-toggle="modal" data-target="#edit">
-						<span class="glyphicon glyphicon-pencil"></span>
-					</button>
-				</p>
-			</td>
-			<td>
-				<p data-placement="top" data-toggle="tooltip" title="Delete">
-					<button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" >
-						<span class="glyphicon glyphicon-trash"></span>
-					</button>
-				</p>
-			</td>
-		</tr>
-  	@endforeach
-@endif
-
-
-
-
-</tbody>
-
-</table>
-
-
-
-</div>
-
-</div>
-</div>
-</div>
-
-
-
-<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
-<div class="modal-dialog">
-<div class="modal-content">
-<div class="modal-header">
-<button type="button"  class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-<h4 class="modal-title custom_align" id="Heading">Editar la imagen</h4>
-</div>
-
-<div class="modal-body">
-	<form method="post" action="portafolio/guardarImagen" enctype="multipart/form-data">
-	 <input type="hidden" name="_token" value="{{ csrf_token() }}">
-		<div class="form-group">
-		<input class="form-control " name="id" id="id" type="hidden">
-		</div>
-		<div class="form-group">
-		<input class="form-control " name="nombre" type="text" placeholder="Nombre de la imagen">
-		</div>
-		<div class="form-group">
-		<textarea rows="2" name="comentario" class="form-control" placeholder="comentario de la imagen"></textarea>	 
-			Buscar Imagen: <input name="imagen" type="file">       
-		</div>
-		<button type="submit" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span>Cargar Imagen</button>
-	</form>
-</div>
-
-
-</div>
-<!-- /.modal-content --> 
-</div>
-<!-- /.modal-dialog --> 
-</div>
-
-
-
-
-<div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
-<div class="modal-dialog">
-<div class="modal-content">
-<div class="modal-header">
-<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-<h4 class="modal-title custom_align" id="Heading">Borrar la imagen</h4>
-</div>
-<div class="modal-body">
-
-<div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Esta seguro que desea borrar está imagen?</div>
-
-</div>
-<div class="modal-footer ">
-<button type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span>Si</button>
-<button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
-</div>
-</div>
-<!-- /.modal-content --> 
-</div>
-<!-- /.modal-dialog --> 
-</div>
-
-
-</div>
-
-<!-- /.box-body -->
-
-</div>
-
-<!-- /. box -->
-
-</div>
-
-<!-- /.col -->
-
-</div>
+                                        <table id="mytable" class="table table-bordred table-striped">
+                                            <thead>
+                                                <th>#</th>
+                                                <th>perfil</th>
+                                                <th>Estado</th>
+                                                <th>Aceptado</th>
+                                                <th>Saldo de cuenta</th>
+                                                <th>Fecha de creacion</th>
+                                                <th>Decha de actualización</th>
+                                                <th>Imagen</th>
+                                            </thead>
+                                            <tbody>
+                                                @if(count($profesonales) > 0)
+                                                    @php($cnt = 0)
+                                                    @foreach($profesonales as $profesional)
+                                                        @php($cnt++)
+                                                        <tr>
+                                                            <td>{{$cnt}}</td>
+                                                            <td>{{$profesional['perfil']}}</td>
+                                                            <td>
+                                                                @if($profesional['estado'] == 1)
+                                                                    Activo
+                                                                @else
+                                                                    Inactivo
+                                                                @endif
+                                                            </td>
+                                                            <td>
+                                                                @if($profesional['aceptado'] == 1)
+                                                                    Sí
+                                                                @else
+                                                                    No
+                                                                @endif
+                                                            </td>
+                                                            <td>${{number_format($profesional['saldo_de_cuenta'])}}</td>
+                                                            <td>{{$profesional['fecha_creacion']}}</td>
+                                                            <td>{{$profesional['fecha_modificacion']}}</td>
+                                                            <td>
+                                                                <p data-placement="top" data-toggle="tooltip" title="Edit">
+                                                                    <button class="btn btn-primary btn-xs" onclick="asignarId({{$profesional['id']}})" data-title="Edit" data-toggle="modal" data-target="#edit">
+                                                                        <span class="fa fa-image"></span>
+                                                                    </button>
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                @endif
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
 
@@ -710,8 +614,37 @@
 
 <script>
 	function asignarId(id){
-     jQuery('#id').val(id);
+	 jQuery('#id').val(id);
 	}
+
+    function idEliminar(id) {
+	    jQuery('#btn-eliminar').attr('onclick','eliminarImagen('+id+')');
+    }
+
+    function eliminarImagen(id) {
+        jQuery.ajax({
+            url: 'portafolio/borrar',
+            type: 'post',
+            data: {id:id},
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+            },
+            dataType: 'json',
+            success: function (json) {
+                switch (json.resultado) {
+                    case 1:
+                        location.assign('?mensajeEliminar=true');
+                        break;
+                    default:
+                        location.assign('?mensajeEliminar=false');
+                        break;
+                }
+            },
+            error: function(result) {
+                location.assign('?mensajeEliminar=false');
+            }
+        });
+    }
 </script>
 
 <!-- Page specific script -->
@@ -721,3 +654,57 @@
 	</body>
 
 </html>
+
+<div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+            <h4 class="modal-title custom_align" id="Heading">Borrar la imagen</h4>
+        </div>
+        <div class="modal-body">
+
+            <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Esta seguro que desea borrar está imagen?</div>
+
+        </div>
+        <div class="modal-footer ">
+            <button id="btn-eliminar" type="button" class="btn btn-success" onclick="eliminarImagen()"><span class="glyphicon glyphicon-ok-sign"></span>Si</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
+        </div>
+    </div>
+    <!-- /.modal-content -->
+</div>
+<!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button"  class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                <h4 class="modal-title custom_align" id="Heading">Editar la imagen</h4>
+            </div>
+
+            <div class="modal-body">
+                <form method="post" action="portafolio/guardarImagen" enctype="multipart/form-data">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <div class="form-group">
+                        <input class="form-control " name="id" id="id" type="hidden">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control " name="nombre" type="text" placeholder="Nombre de la imagen">
+                    </div>
+                    <div class="form-group">
+                        <textarea rows="2" name="comentario" class="form-control" placeholder="comentario de la imagen"></textarea>
+                        Buscar Imagen: <input name="imagen" type="file">
+                    </div>
+                    <button type="submit" class="btn btn-success btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span>Cargar Imagen</button>
+                </form>
+            </div>
+
+
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>

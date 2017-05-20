@@ -30,38 +30,65 @@ class PortafolioController extends Controller
     }
 
     public function guardarImagen(Request $request){
-    	
-    	$id_portafolio=$request->get('id');
-    	$nombre_=$request->get('nombre');
-        $comentario= $request->get('comentario');
 
-	if ($request->file('imagen')) {
+        $cantidad = ImagenPortafolio::consultarCantidadPorPortafolio($request->get('id'))->toArray();
 
-			$directorio = __DIR__.'/../../../../recursos/imagen_portafolio';
-		    $archivo 	= $request->file('imagen');
-		    
-		    $nombre 		= explode('.',$archivo->getClientOriginalName());
-		    $ext 			= $nombre[1];
-		    $nombreArchivo 	= $request->session()->get('idUsuario') . '_' . date("Ymd_his") . ".$ext";
+        if (count($cantidad) > 3) {
+            return redirect('administrador/portafolio?error=3');
+        }
+        else {
 
-		    if ($archivo->move($directorio, $nombreArchivo)) {
+            $id_portafolio = $request->get('id');
+            $nombre_ = $request->get('nombre');
+            $comentario = $request->get('comentario');
 
-		    	$tabla= new ImagenPortafolio();
-		    	$tabla->id_portafolio = $id_portafolio;
-		    	$tabla->url = $nombreArchivo;
-			    $tabla->nombre = $nombre_;
-			    $tabla->comentario = $comentario;
-			    
+            if ($request->file('imagen')) {
+
+                $directorio = __DIR__ . '/../../../../recursos/imagen_portafolio';
+                $archivo = $request->file('imagen');
+
+                $nombre = explode('.', $archivo->getClientOriginalName());
+                $ext = $nombre[1];
+                $nombreArchivo = $request->session()->get('idUsuario') . '_' . date("Ymd_his") . ".$ext";
+
+                if ($archivo->move($directorio, $nombreArchivo)) {
+
+                    $tabla = new ImagenPortafolio();
+                    $tabla->id_portafolio = $id_portafolio;
+                    $tabla->url = $nombreArchivo;
+                    $tabla->nombre = $nombre_;
+                    $tabla->comentario = $comentario;
 
 
-			    $tabla->save();
-                return redirect('administrador/portafolio');
-			}
-		}
+                    $tabla->save();
+                    return redirect('administrador/portafolio');
+                }
+            }
+        }
 
     	die;
     }
 
+
+    public function borrar(Request $request) {
+
+        $imagenPortafolio = ImagenPortafolio::Find($request->get('id'))->toArray();
+
+        if ($imagenPortafolio) {
+
+            @unlink(__DIR__ . '/../../../../recursos/imagen_portafolio/' . $imagenPortafolio['url']);
+
+            return imagenPortafolio::eliminar($request);
+
+        }
+        else {
+            return response()->json(array(
+                'resultado' => 0,
+                'mensaje'   => 'Se encontraron problemas al eliminar',
+            ));
+        }
+
+    }
 
     
 }
