@@ -86,6 +86,7 @@ Route::post('/verificarLogin', function (Request $request) {
 	if (count($consulta)) {
 
 		$request->session()->put('idUsuario', $consulta[0]['id']);
+        $request->session()->put('idRol', $consulta[0]['id_roles']);
 		$request->session()->put('rutaImagen', $consulta[0]['ruta_imagen']);
 		$request->session()->put('nombre', $consulta[0]['primer_nombre'].' '.$consulta[0]['primer_apellido'] .' '.$consulta[0]['segundo_apellido']);
 		
