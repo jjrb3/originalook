@@ -180,6 +180,10 @@ Route::post('administrador/portafolio/guardarImagen','PortafolioController@guard
 Route::post('administrador/portafolio/borrar','PortafolioController@borrar');
 // Fin de Portafolio
 
+// Empleados
+Route::get('administrador/empleados','EmpleadosController@Consultar');
+// Fin de Empleados
+
 
 Route::get('administrador/solicitudes', function (Request $request) {
 	if(!$request->session()->get('idUsuario')) {return redirect('./');}
