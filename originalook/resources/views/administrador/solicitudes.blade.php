@@ -350,6 +350,10 @@
 
         <li class="treeview"><a href="perfil"><i class="fa fa-user "></i><span>Mi Perfil</span></a></li>
 
+          @if($idRol == 3)
+              <li class="treeview"><a href="empleados"><i class="fa fa-users"></i> <span>Empleados</span></a></li>
+          @endif
+
         <li><a href="servicios"><i class="fa fa-th"></i> <span>Mis Servicios</span></a></li>
 
         <li class="treeview"><a href="solicitudes"><i class="fa fa-calendar"></i> <span>Mis Solicitudes</span></a></li>

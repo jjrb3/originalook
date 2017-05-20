@@ -175,6 +175,9 @@
         <li class="header">Menú Originalook</li>
         <li class="treeview"><a href="inicio"><i class="fa fa-dashboard"></i> <span>Inicio</span></a></li>
         <li class="treeview"><a href="perfil"><i class="fa fa-user "></i><span>Mi Perfil</span></a></li>
+        @if($idRol == 3)
+          <li class="treeview"><a href="empleados"><i class="fa fa-users"></i> <span>Empleados</span></a></li>
+        @endif
         <li><a href="servicios"><i class="fa fa-th"></i> <span>Mis Servicios</span></a></li>
         <li class="treeview"><a href="solicitudes"><i class="fa fa-calendar"></i> <span>Mis Solicitudes</span></a></li>
         <li class="treeview"><a href="pagos"><i class="fa fa-share"></i> <span>Mis Pagos Hechos</span></a></li>
