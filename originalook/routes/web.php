@@ -124,7 +124,8 @@ Route::get('administrador/perfil', function (Request $request) {
     	'nombreUsuario' => $request->session()->get('nombre'),
     	'datosUsuario' => $usuario,
     	'mensaje' => $mensaje,
-    	'rutaImagen' => $request->session()->get('rutaImagen')
+    	'rutaImagen' => $request->session()->get('rutaImagen'),
+        'idRol' => $request->session()->get('idRol'),
     	]);
 });
 
@@ -182,6 +183,8 @@ Route::post('administrador/portafolio/borrar','PortafolioController@borrar');
 
 // Empleados
 Route::get('administrador/empleados','EmpleadosController@Consultar');
+Route::post('administrador/empleados/guardar','EmpleadosController@Guardar');
+Route::get('administrador/empleados/eliminar','EmpleadosController@Eliminar');
 // Fin de Empleados
 
 
@@ -190,6 +193,7 @@ Route::get('administrador/solicitudes', function (Request $request) {
     return view('administrador.solicitudes',[
     	'nombreUsuario' => $request->session()->get('nombre'),
     	'rutaImagen' => $request->session()->get('rutaImagen'),
+        'idRol' => $request->session()->get('idRol'),
     	]);
 });
 
@@ -198,6 +202,7 @@ Route::get('administrador/pagos', function (Request $request) {
     return view('administrador.pagos',[
     	'nombreUsuario' => $request->session()->get('nombre'),
     	'rutaImagen' => $request->session()->get('rutaImagen'),
+        'idRol' => $request->session()->get('idRol'),
     	]);
 });
 
@@ -206,5 +211,6 @@ Route::get('administrador/documentacion', function (Request $request) {
     return view('administrador.documentacion',[
     	'nombreUsuario' => $request->session()->get('nombre'),
     	'rutaImagen' => $request->session()->get('rutaImagen'),
+        'idRol' => $request->session()->get('idRol'),
     	]);
 });

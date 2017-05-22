@@ -32,6 +32,7 @@ class ServiciosController extends Controller
                 'mensaje' => $mensaje,
                 'listaServicios' => $listaServicio,
                 'rutaImagen' => $request->session()->get('rutaImagen'),
+                'idRol' => $request->session()->get('idRol'),
             ]
         );
     }

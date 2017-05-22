@@ -24,6 +24,7 @@ class PortafolioController extends Controller
         return view('administrador.portafolio',[
             'nombreUsuario' => $request->session()->get('nombre'),
             'rutaImagen' => $request->session()->get('rutaImagen'),
+            'idRol' => $request->session()->get('idRol'),
             'profesonales' => $profesionales,
             'imagen' => $consulta,
             ]);

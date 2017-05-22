@@ -279,7 +279,7 @@ $(document).on('ready', function() {
             <div class="input-group col-sm-3">
               <span class="input-group-addon"><span class="fa fa-phone"></span></span>
               <input class="form-control" type="text" id="formGroup" name="telefono" value="{{$datosUsuario['telefono']}}">
-              
+
             </div>
             </div>
  
