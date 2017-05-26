@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <title>Originalook</title>
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Tell the browser to be responsive to screen width -->
 
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -601,7 +601,8 @@
                                                         @endif
                                                     </td>
                                                     <td>
-                                                        <button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete">
+                                                        <button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete"
+                                                                onclick="idEliminar({{$lista->id}})">
                                                             <span class="glyphicon glyphicon-trash"></span>
                                                         </button>
                                                     </td>
@@ -706,3 +707,55 @@
 </body>
 
 </html>
+
+<div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                <h4 class="modal-title custom_align" id="Heading">Borrar la imagen</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="alert alert-danger"><span class="glyphicon glyphicon-warning-sign"></span> Esta seguro que desea eliminarlo?</div>
+
+            </div>
+            <div class="modal-footer ">
+                <button id="btn-eliminar" type="button" class="btn btn-success"><span class="glyphicon glyphicon-ok-sign"></span>Si</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function idEliminar(id) {
+        jQuery('#btn-eliminar').attr('onclick','eliminar('+id+')');
+    }
+    function eliminar(id) {
+
+        jQuery.ajax({
+            url: 'empleados/eliminar',
+            type: 'post',
+            data: {id:id},
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+            },
+            dataType: 'json',
+            success: function (json) {
+                switch (json.resultado) {
+                    case 1:
+                        location.assign('?mensajeEliminar=true');
+                        break;
+                    default:
+                        location.assign('?mensajeEliminar=false');
+                        break;
+                }
+            },
+            error: function(result) {
+                location.assign('?mensajeEliminar=false');
+            }
+        });
+    }
+</script>

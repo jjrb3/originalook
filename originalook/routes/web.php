@@ -184,7 +184,7 @@ Route::post('administrador/portafolio/borrar','PortafolioController@borrar');
 // Empleados
 Route::get('administrador/empleados','EmpleadosController@Consultar');
 Route::post('administrador/empleados/guardar','EmpleadosController@Guardar');
-Route::get('administrador/empleados/eliminar','EmpleadosController@Eliminar');
+Route::post('administrador/empleados/eliminar','EmpleadosController@Eliminar');
 // Fin de Empleados
 
 

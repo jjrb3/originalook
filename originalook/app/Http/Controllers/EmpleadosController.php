@@ -39,4 +39,9 @@ class EmpleadosController extends Controller
 
         return $clase->save() ? redirect('administrador/empleados?result=1') : redirect('administrador/empleados?mensaje=-1');
     }
+
+    public function Eliminar(Request $request) {
+
+        return Empleados::eliminar($request);
+    }
 }
