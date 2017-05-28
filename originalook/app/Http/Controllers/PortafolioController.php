@@ -27,6 +27,7 @@ class PortafolioController extends Controller
             'idRol' => $request->session()->get('idRol'),
             'profesonales' => $profesionales,
             'imagen' => $consulta,
+            'menu' => \App\Http\Controllers\MenuController::ObtenerMenu($request),
             ]);
     }
 

@@ -19,6 +19,7 @@ class EmpleadosController extends Controller
             'idRol' => $request->session()->get('idRol'),
             'roles' => Roles::all(),
             'empleados' => Empleados::orderBy('id','DESC')->get(),
+            'menu' => \App\Http\Controllers\MenuController::ObtenerMenu($request),
         ]);
     }
 

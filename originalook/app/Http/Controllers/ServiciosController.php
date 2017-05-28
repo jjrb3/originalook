@@ -33,6 +33,7 @@ class ServiciosController extends Controller
                 'listaServicios' => $listaServicio,
                 'rutaImagen' => $request->session()->get('rutaImagen'),
                 'idRol' => $request->session()->get('idRol'),
+                'menu' => \App\Http\Controllers\MenuController::ObtenerMenu($request),
             ]
         );
     }

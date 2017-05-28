@@ -106,6 +106,7 @@ Route::get('administrador/inicio', function (Request $request) {
     	'nombreUsuario' => $request->session()->get('nombre'),
     	'rutaImagen' => $request->session()->get('rutaImagen'),
         'idRol' => $request->session()->get('idRol'),
+        'menu' => \App\Http\Controllers\MenuController::ObtenerMenu($request),
     	]);
 });
 
@@ -126,6 +127,7 @@ Route::get('administrador/perfil', function (Request $request) {
     	'mensaje' => $mensaje,
     	'rutaImagen' => $request->session()->get('rutaImagen'),
         'idRol' => $request->session()->get('idRol'),
+        'menu' => \App\Http\Controllers\MenuController::ObtenerMenu($request),
     	]);
 });
 
@@ -194,6 +196,7 @@ Route::get('administrador/solicitudes', function (Request $request) {
     	'nombreUsuario' => $request->session()->get('nombre'),
     	'rutaImagen' => $request->session()->get('rutaImagen'),
         'idRol' => $request->session()->get('idRol'),
+        'menu' => \App\Http\Controllers\MenuController::ObtenerMenu($request),
     	]);
 });
 
@@ -203,6 +206,7 @@ Route::get('administrador/pagos', function (Request $request) {
     	'nombreUsuario' => $request->session()->get('nombre'),
     	'rutaImagen' => $request->session()->get('rutaImagen'),
         'idRol' => $request->session()->get('idRol'),
+        'menu' => \App\Http\Controllers\MenuController::ObtenerMenu($request),
     	]);
 });
 
@@ -212,5 +216,6 @@ Route::get('administrador/documentacion', function (Request $request) {
     	'nombreUsuario' => $request->session()->get('nombre'),
     	'rutaImagen' => $request->session()->get('rutaImagen'),
         'idRol' => $request->session()->get('idRol'),
+        'menu' => \App\Http\Controllers\MenuController::ObtenerMenu($request),
     	]);
 });
