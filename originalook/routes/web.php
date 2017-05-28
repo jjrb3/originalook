@@ -189,6 +189,13 @@ Route::post('administrador/empleados/guardar','EmpleadosController@Guardar');
 Route::post('administrador/empleados/eliminar','EmpleadosController@Eliminar');
 // Fin de Empleados
 
+// Usuario
+Route::get('administrador/usuario','UsuarioController@Consultar');
+Route::get('administrador/editar-usuario','UsuarioController@EditarUsuario');
+Route::post('administrador/usuario/actualizar','UsuarioController@Actualizar');
+Route::post('administrador/usuario/cambiarEstado','UsuarioController@CambiarEstado');
+// Fin de Usuario
+
 
 Route::get('administrador/solicitudes', function (Request $request) {
 	if(!$request->session()->get('idUsuario')) {return redirect('./');}
