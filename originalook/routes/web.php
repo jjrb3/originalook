@@ -193,7 +193,6 @@ Route::post('administrador/empleados/eliminar','EmpleadosController@Eliminar');
 Route::get('administrador/usuario','UsuarioController@Consultar');
 Route::get('administrador/editar-usuario','UsuarioController@EditarUsuario');
 Route::post('administrador/usuario/actualizar','UsuarioController@Actualizar');
-Route::post('administrador/usuario/cambiarEstado','UsuarioController@CambiarEstado');
 // Fin de Usuario
 
 
