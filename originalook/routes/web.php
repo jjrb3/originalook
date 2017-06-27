@@ -17,8 +17,15 @@ use Illuminate\Http\Request;
 
 
 Route::get('/', function () {
-    return view('inicio');
+    return view('wellive');
 });
+
+Route::get('/inicio', function () {return view('inicio');});
+Route::get('/portafolio', function () {return view('portafolio');});
+Route::get('/servicios', function () {return view('servicios');});
+Route::get('/contacto', function () {return view('contacto');});
+Route::get('/wellive', function () {return view('wellive');});
+
 
 Route::get('administrador/cerrarSesion', function (Request $request) {
 
