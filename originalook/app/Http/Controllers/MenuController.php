@@ -30,7 +30,7 @@ class MenuController extends Controller
                 </a>
             </li>' .
 
-            ($idRol == 2 || $idRol == 4 ? '<li class="treeview"><a href="usuario"><i class="fa fa-users"></i> <span>Usuarios</span></a></li>' : '') .
+            ($idRol == 2 ? '<li class="treeview"><a href="usuario"><i class="fa fa-users"></i> <span>Usuarios</span></a></li>' : '') .
 
             ($idRol == 3 ? '<li class="treeview"><a href="empleados"><i class="fa fa-users"></i> <span>Empleados</span></a></li>' : '') .
 
@@ -45,7 +45,7 @@ class MenuController extends Controller
                 </a>
             </li>' .
 
-            ($idRol != 1 ? '<li><a href="pagos"><i class="fa fa-share"></i> <span>Mis Pagos Hechos</span></a></li>' : '') .
+            ($idRol == 2 ? '<li><a href="pagos"><i class="fa fa-share"></i> <span>Mis Pagos Hechos</span></a></li>' : '') .
 
             ($idRol != 2 ? '<li><a href="portafolio"><i class="fa fa-image"></i> <span>Mi Portafolio</span></a></li>' : '') .
 

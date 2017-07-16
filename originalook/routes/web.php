@@ -99,7 +99,7 @@ Route::post('/verificarLogin', function (Request $request) {
 	}
 	else {
 
-		return redirect('./');
+		return redirect('./inicio');
 	}
 });
 
