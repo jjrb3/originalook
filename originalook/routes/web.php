@@ -50,7 +50,7 @@ Route::post('/registrarCliente', function (Request $request) {
 	$tabla = new Usuarios();
 
 	$tabla->id_roles = $request->get('rol') == 'Profesional' ? 1 : 4;
-	$tabla->id_documentos = 1;#$request->get('tipoIdentificacion');
+	$tabla->id_documentos = $request->get('tipoIdentificacion');
 	$tabla->primer_nombre = $request->get('primerNombre');
 	$tabla->segundo_nombre = $request->get('segundoNombre');
 	$tabla->primer_apellido = $request->get('primerApellido');
@@ -203,6 +203,12 @@ Route::post('administrador/usuario/actualizar','UsuarioController@Actualizar');
 #Solicitudes
 Route::get('administrador/solicitudes','SolicitudesController@Consultar');
 //Solicitudes
+
+// Empleados
+Route::get('administrador/empresas','EmpresasController@Consultar');
+Route::post('administrador/empresas/guardar','EmpresasController@Guardar');
+Route::post('administrador/empresas/eliminar','EmpresasController@Eliminar');
+// Fin de Empleados
 
 Route::get('administrador/pagos', function (Request $request) {
 	if(!$request->session()->get('idUsuario')) {return redirect('./');}

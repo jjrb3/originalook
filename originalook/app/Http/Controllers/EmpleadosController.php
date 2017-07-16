@@ -18,7 +18,7 @@ class EmpleadosController extends Controller
             'rutaImagen' => $request->session()->get('rutaImagen'),
             'idRol' => $request->session()->get('idRol'),
             'roles' => Roles::all(),
-            'empleados' => Empleados::orderBy('id','DESC')->get(),
+            'empleados' => Empleados::whereIn('id_rol',[1,3])->orderBy('id','DESC')->get(),
             'menu' => \App\Http\Controllers\MenuController::ObtenerMenu($request),
         ]);
     }

@@ -387,9 +387,9 @@
 
                             <div class="col-md-12">
 
-                                <center> <h4 class="widget-title">Mis Empleados</h4>
+                                <center> <h4 class="widget-title">Empresas</h4>
 
-                                    <p>Agrega Tus Empleados.</p></center>
+                                    <p>Agrega Empresa.</p></center>
 
 
 
@@ -401,7 +401,7 @@
 
                     <br>
 
-                    <form class="form-horizontal" action="empleados/guardar" method="post">
+                    <form class="form-horizontal" action="empresas/guardar" method="post">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <fieldset>
                             <div class="form-group">
@@ -409,14 +409,14 @@
                                 <div class="col-md-4">
                                     <select name="id_rol" class="form-control input-md">
                                         @foreach($roles as $listado)
-                                            @if($listado->id != 2 && $listado->id != 4)
+                                            @if($listado->id == 4)
                                                 <option value="{{$listado->id}}">{{$listado->nombre}}</option>
                                             @endif
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="col-md-4">
-                                    <input id="" name="documento" type="text" min="0" placeholder="Documento" class="form-control input-md" required>
+                                    <input id="" name="documento" type="text" min="0" placeholder="NIT" class="form-control input-md" required>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -425,7 +425,10 @@
                                     <input name="nombre" type="text" placeholder="Nombre" class="form-control input-md" required>
                                 </div>
                                 <div class="col-md-4">
-                                    <input name="apellido" type="text" min="0" placeholder="Apellido" class="form-control input-md" required>
+                                    <select name="estado" class="form-control input-md">
+                                        <option value="1">Activo</option>
+                                        <option value="0">Inactivo</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -440,28 +443,19 @@
                             <div class="form-group">
                                 <label class="col-md-2"></label>
                                 <div class="col-md-4">
-                                    <input name="fecha_nacimiento" type="date" class="form-control input-md" required>
+                                    <input name="correo" type="text" min="0" placeholder="Correo" class="form-control input-md" required>
                                 </div>
-                                <div class="col-md-4">
-                                    <select name="estado" class="form-control input-md">
-                                        <option value="1">Activo</option>
-                                        <option value="0">Inactivo</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-md-2"></label>
-                                <div class="col-md-4">
-                                    <input name="disponible_fecha" type="date" class="form-control input-md" required>
-                                </div>
-                                <div class="col-md-4">
-                                    <input name="disponible_hora" type="time" class="form-control input-md" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-md-2"></label>
                                 <div class="col-md-4">
                                     <input name="ciudad" type="text" placeholder="Ciudad" class="form-control input-md" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2"></label>
+                                <div class="col-md-4">
+                                    <input name="usuario" type="text" min="0" placeholder="Usuario" class="form-control input-md" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <input name="clave" type="password" class="form-control input-md" required>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -532,16 +526,11 @@
                                     <tr>
                                         <th>Documento</th>
                                         <th>Nombre</th>
-
-                                        <th>Apellido</th>
-
                                         <th>Direccion</th>
-
-                                        <th>Fecha Nacimiento</th>
-
-                                        <th>Rol</th>
+                                        <th>Telefono</th>
+                                        <th>Correo</th>
                                         <th>telefono</th>
-                                        <th>Disponibilidad</th>
+                                        <th>Ciudad</th>
                                         <th>Estado</th>
                                         <th>Opción</th>
 
@@ -552,25 +541,16 @@
 
                                     <tbody>
 
-                                        @if($empleados)
-                                            @foreach($empleados as $lista)
+                                        @if($empresas)
+                                            @foreach($empresas as $lista)
                                                 <tr>
-                                                    <td>{{$lista->documento}}</td>
-                                                    <td>{{$lista->nombre}}</td>
-                                                    <td>{{$lista->apellido}}</td>
+                                                    <td>{{$lista->identificacion}}</td>
+                                                    <td>{{$lista->primer_nombre}}</td>
                                                     <td>{{$lista->direccion}}</td>
-                                                    <td>{{$lista->fecha_nacimiento}}</td>
-                                                    <td>
-                                                        @if($lista->id_rol == 1)
-                                                            Profesional
-                                                        @elseif($lista->id_rol == 2)
-                                                            Administrador
-                                                        @elseif($lista->id_rol == 3)
-                                                            Empresa
-                                                        @endif
-                                                    </td>
                                                     <td>{{$lista->telefono}}</td>
-                                                    <td>{{$lista->disponible_fecha}} - {{substr($lista->disponible_hora,0,5)}}</td>
+                                                    <td>{{$lista->correo}}</td>
+                                                    <td>{{$lista->telefono}}</td>
+                                                    <td>{{$lista->ciudad}}</td>
                                                     <td>
                                                         @if($lista->estado == 1)
                                                             Activo
@@ -691,7 +671,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
-                <h4 class="modal-title custom_align" id="Heading">Borrar la imagen</h4>
+                <h4 class="modal-title custom_align" id="Heading">Borrar la empresa</h4>
             </div>
             <div class="modal-body">
 
@@ -711,10 +691,11 @@
     function idEliminar(id) {
         jQuery('#btn-eliminar').attr('onclick','eliminar('+id+')');
     }
+
     function eliminar(id) {
 
         jQuery.ajax({
-            url: 'empleados/eliminar',
+            url: 'empresas/eliminar',
             type: 'post',
             data: {id:id},
             headers: {
@@ -723,6 +704,7 @@
             dataType: 'json',
             success: function (json) {
                 switch (json.resultado) {
+
                     case 1:
                         location.assign('?mensajeEliminar=true');
                         break;
