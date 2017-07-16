@@ -43,15 +43,9 @@ class MenuController extends Controller
                         Mis Solicitudes
                     </span>
                 </a>
-            </li>
-            <li class="treeview">
-                <a href="pagos">
-                    <i class="fa fa-share"></i> 
-                    <span>
-                        Mis Pagos Hechos
-                    </span>
-                </a>
             </li>' .
+
+            ($idRol != 1 ? '<li><a href="pagos"><i class="fa fa-share"></i> <span>Mis Pagos Hechos</span></a></li>' : '') .
 
             ($idRol != 2 ? '<li><a href="portafolio"><i class="fa fa-image"></i> <span>Mi Portafolio</span></a></li>' : '') .
 
