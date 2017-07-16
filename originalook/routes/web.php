@@ -200,16 +200,9 @@ Route::get('administrador/editar-usuario','UsuarioController@EditarUsuario');
 Route::post('administrador/usuario/actualizar','UsuarioController@Actualizar');
 // Fin de Usuario
 
-
-Route::get('administrador/solicitudes', function (Request $request) {
-	if(!$request->session()->get('idUsuario')) {return redirect('./');}
-    return view('administrador.solicitudes',[
-    	'nombreUsuario' => $request->session()->get('nombre'),
-    	'rutaImagen' => $request->session()->get('rutaImagen'),
-        'idRol' => $request->session()->get('idRol'),
-        'menu' => \App\Http\Controllers\MenuController::ObtenerMenu($request),
-    	]);
-});
+#Solicitudes
+Route::get('administrador/solicitudes','SolicitudesController@Consultar');
+//Solicitudes
 
 Route::get('administrador/pagos', function (Request $request) {
 	if(!$request->session()->get('idUsuario')) {return redirect('./');}

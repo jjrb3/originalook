@@ -448,115 +448,40 @@
   <div class="row">
     
         
-        <div class="col-md-12">
-    
-        <div class="table-responsive">
+        <div class="col-md-11">
 
-                
-<table id="mytable" class="table table-bordred table-striped">
-     
-     <thead>
-     
-
-     <th>#</th>
-      <th>Identificacion_profesional</th>
-       <th>Comentarios</th>
-       <th>Calificacion</th>
-       <th>Fecha de creacion</th>
-       <th>Decha de actualización</th>
-       <th>Estado</th>
-       <th>Valor</th>
-       <th>Edit</th>
-       <th>Delete</th>
-     </thead>
-      <tbody>
-
-      <tr>
-
-      <td>1</td>
-      <td>Irshad</td>
-      <td>CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan</td>
-      <td>isometric.mohsin@gmail.com</td>
-      <td>+923335586757</td>
-      <td>Hol</td>
-      <td>g</td>
-      <td>g</td>
-      <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-      <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
-      </tr>
-
-      <tr>
-      <td>2</td>
-      <td>Irshad</td>
-      <td>CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan</td>
-      <td>isometric.mohsin@gmail.com</td>
-      <td>+923335586757</td>
-      <td>Hol</td>
-      <td>g</td>
-      <td>g</td>
-      <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-      <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
-      </tr>
-
-
-      <tr>
-      <td>3</td>
-      <td>Irshad</td>
-      <td>CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan</td>
-      <td>isometric.mohsin@gmail.com</td>
-      <td>+923335586757</td>
-      <td>Hol</td>
-      <td>g</td>
-      <td>g</td>
-      <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-      <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
-      </tr>
-
-
-
-      <tr>
-      <td>4</td>
-      <td>Irshad</td>
-      <td>CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan</td>
-      <td>isometric.mohsin@gmail.com</td>
-      <td>+923335586757</td>
-      <td>Hol</td>
-      <td>g</td>
-      <td>g</td>
-      <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-      <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
-      </tr>
-
-
-      <tr>
-      <td>5</td>
-      <td>Irshad</td>
-      <td>CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan</td>
-      <td>isometric.mohsin@gmail.com</td>
-      <td>+923335586757</td>
-      <td>Hol</td>
-      <td>g</td>
-      <td>g</td>
-      <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-      <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
-      </tr>
-
-      </tbody>
-
-</table>
-
-<div class="clearfix"></div>
-<ul class="pagination pull-right">
-  <li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
-  <li class="active"><a href="#">1</a></li>
-  <li><a href="#">2</a></li>
-  <li><a href="#">3</a></li>
-  <li><a href="#">4</a></li>
-  <li><a href="#">5</a></li>
-  <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
-</ul>
-                
+            <!-- tabla -->
+            @if($solicitudes)
+            <div class="table-responsive">
+                <table id="mytable" class="table table-bordred table-striped">
+                    <thead>
+                        <th>codigo</th>
+                        <th>Fecha de petición</th>
+                        <th>Costo</th>
+                        <th>Tiempo de duración</th>
+                        <th>Servicio</th>
+                        <th>Perfil</th>
+                        <th>Zona</th>
+                    </thead>
+                    <tbody>
+                        @foreach ($solicitudes as $solicitud)
+                        <tr>
+                            <td>{{$solicitud['codigo_generado']}}</td>
+                            <td>{{$solicitud['fecha_peticion']}}</td>
+                            <td>{{$solicitud['costo']}}</td>
+                            <td>{{$solicitud['tiempo_duracion']}}</td>
+                            <td>{{$solicitud['nombre']}}</td>
+                            <td>{{$solicitud['perfil']}}</td>
+                            <td>{{$solicitud['zona']}}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
+            @else
+                <h3 align="center">No se encontraron solicitudes...</h3>
+            @endif
+            <!-- Fin tabla -->
             
         </div>
   </div>
