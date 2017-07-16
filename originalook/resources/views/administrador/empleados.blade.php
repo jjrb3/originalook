@@ -409,7 +409,13 @@
                                 <div class="col-md-4">
                                     <select name="id_rol" class="form-control input-md">
                                         @foreach($roles as $listado)
-                                            <option value="{{$listado->id}}">{{$listado->nombre}}</option>
+                                            @if($idRol == 4)
+                                                @if($listado->id != 2 && $listado->id != 4)
+                                                    <option value="{{$listado->id}}">{{$listado->nombre}}</option>
+                                                @endif
+                                            @else
+                                                <option value="{{$listado->id}}">{{$listado->nombre}}</option>
+                                            @endif
                                         @endforeach
                                     </select>
                                 </div>
