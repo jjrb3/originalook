@@ -136,22 +136,22 @@
 						</div>  
                         <div class="row">
                             <div class="col-sm-4 form-group">
-                                <label>Primer nombre</label>
+                                <label id="label-primer-nombre">Primer nombre</label>
                                 <input type="text" name="primerNombre" placeholder="...." class="form-control">
                             </div>
-                            <div class="col-sm-4 form-group">
+                            <div class="col-sm-4 form-group bloque-profesional">
                                 <label>Segundo nombre</label>
-                                <input type="text" name="segundoNombre" placeholder="...." class="form-control">
+                                <input type="text" name="segundoNombre"  placeholder="...." class="form-control">
                             </div>
-                              <div class="col-sm-4 form-group">
+                              <div class="col-sm-4 form-group bloque-profesional">
                                 <label>Primer apellido</label>
-                                <input type="text" name="primerApellido" placeholder="...." class="form-control">
+                                <input type="text" name="primerApellido"  placeholder="...." class="form-control">
                             </div> 
                         </div>                  
                         <div class="row">
-                            <div class="col-sm-6 form-group">
+                            <div class="col-sm-6 form-group bloque-profesional">
                                 <label>Segundo apellido</label>
-                                <input type="text" name="segundoApellido" placeholder="...." class="form-control">
+                                <input type="text" name="segundoApellido"  placeholder="...." class="form-control">
                             </div>      
                             <div class="col-sm-6 form-group">
                                 <label>E-mail</label>
@@ -392,3 +392,18 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
   </body>
 </html>
+
+<script>
+    $(document).ready(function(){
+        $('#estado').change(function(){
+           if (this.value == 'Empresa') {
+               $('#label-primer-nombre').html('Nombre empresa');
+               $('.bloque-profesional').css('display','none');
+           }
+           else {
+               $('#label-primer-nombre').html('Primer nombre');
+               $('.bloque-profesional').css('display','block');
+           }
+        });
+    });
+</script>

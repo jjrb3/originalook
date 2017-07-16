@@ -49,8 +49,8 @@ Route::post('/registrarCliente', function (Request $request) {
 	
 	$tabla = new Usuarios();
 
-	$tabla->id_roles = 1;
-	$tabla->id_documentos = $request->get('tipoIdentificacion');
+	$tabla->id_roles = $request->get('rol') == 'Profesional' ? 1 : 4;
+	$tabla->id_documentos = 1;#$request->get('tipoIdentificacion');
 	$tabla->primer_nombre = $request->get('primerNombre');
 	$tabla->segundo_nombre = $request->get('segundoNombre');
 	$tabla->primer_apellido = $request->get('primerApellido');
@@ -64,19 +64,17 @@ Route::post('/registrarCliente', function (Request $request) {
 	$tabla->telefono = $request->get('telefono');
 	$tabla->estado = 1;
 	$tabla->usuario = $request->get('usuario');
-	$tabla->clave = md5($request->get('clave'));
+	$tabla->clave = $request->get('clave');
 	$tabla->correo = $request->get('email');
 	$tabla->correo_alternativo = $request->get('emailAlternativo');
-	$tabla->genero = $request->get('genero');
-	$tabla->token = $request->get('_token');
 	$tabla->fecha_nacimiento = $request->get('nacimiento');
 	$tabla->fecha_creacion = date('Y-m-d');
 	$tabla->fecha_modificacion = date('Y-m-d');
-	$tabla->fecha_nacimiento = $request->get('nacimiento');
-
+	
 	$tabla->save();
 
 	$request->session()->put('idUsuario', $tabla->id);
+	$request->session()->put('idRol', $tabla->id_roles);
 	$request->session()->put('nombre', $request->get('primerNombre').' '.$request->get('primerApellido') .' '.$request->get('segundoApellido'));
 
 	return redirect('administrador/inicio');
@@ -85,7 +83,7 @@ Route::post('/registrarCliente', function (Request $request) {
 Route::post('/verificarLogin', function (Request $request) {
 	
 	$consulta = Usuarios::where('usuario','=',$request->get('usuario'))
-					->where('clave','=',md5($request->get('clave')))
+					->where('clave','=',$request->get('clave'))
 					->where('estado','=',1)
 					->get()
 					->toArray();
