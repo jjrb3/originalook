@@ -235,24 +235,24 @@ $(document).on('ready', function() {
             </div>
             </div>
             <div class="form-group">
-              <label class="col-sm-2 control-label" for="formGroup">Primer Nombre</label>
+              <label class="col-sm-2 control-label" for="formGroup">@if($idRol == 4) Nombre Empresa @else Primer Nombre @endif</label>
               <div class="col-sm-4">
                 <input class="form-control" name="primer_nombre" type="text" id="formGroup" placeholder="Primer nombre" value="{{$datosUsuario['primer_nombre']}}" readonly>
               </div>
             </div>
-            <div class="form-group">
+            <div class="form-group" @if($idRol == 4) style="display:none;" @endif>
               <label class="col-sm-2 control-label" for="formGroup">Segundo Nombre</label>
               <div class="col-sm-4">
                 <input class="form-control" name="segundo_nombre" type="text" id="formGroup" placeholder="Segundo nombre" value="{{$datosUsuario['segundo_nombre']}}" readonly>
               </div>
             </div>
-            <div class="form-group">
+            <div class="form-group" @if($idRol == 4) style="display:none;" @endif>
               <label class="col-sm-2 control-label" for="formGroup">Primer Apellido</label>
               <div class="col-sm-4">
                 <input class="form-control" name="primer_apellido" type="text" id="formGroup" placeholder="Primer apellido" value="{{$datosUsuario['primer_apellido']}}" readonly>
               </div>
             </div>
-            <div class="form-group">
+            <div class="form-group" @if($idRol == 4) style="display:none;" @endif>
               <label class="col-sm-2 control-label" for="formGroup">Segundo Apellido</label>
               <div class="col-sm-4">
                 <input class="form-control" name="segundo_apellido" type="text" id="formGroup" placeholder="Segundo apellido" value="{{$datosUsuario['segundo_apellido']}}" readonly>
@@ -279,7 +279,7 @@ $(document).on('ready', function() {
             </div>
 
  
-            <div class="form-group">
+            <div class="form-group" @if($idRol == 4) style="display:none;" @endif>
             <label class="col-sm-2 control-label" for="formGroup">Descripción de persona</label>
             <div class="col-sm-4">
               
@@ -299,6 +299,8 @@ $(document).on('ready', function() {
                 <option>Administrador</option>
               @elseif($datosUsuario['id_roles'] == 3)
                 <option>Cliente & Usuario</option>
+              @elseif($idRol == 4)
+                <option>Empresa</option>
               @endif              
             </select>
               
