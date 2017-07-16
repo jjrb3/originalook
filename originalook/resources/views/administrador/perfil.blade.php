@@ -237,25 +237,25 @@ $(document).on('ready', function() {
             <div class="form-group">
               <label class="col-sm-2 control-label" for="formGroup">Primer Nombre</label>
               <div class="col-sm-4">
-                <input class="form-control" name="primer_nombre" type="text" id="formGroup" placeholder="Primer nombre" value="{{$datosUsuario['primer_nombre']}}">
+                <input class="form-control" name="primer_nombre" type="text" id="formGroup" placeholder="Primer nombre" value="{{$datosUsuario['primer_nombre']}}" readonly>
               </div>
             </div>
             <div class="form-group">
               <label class="col-sm-2 control-label" for="formGroup">Segundo Nombre</label>
               <div class="col-sm-4">
-                <input class="form-control" name="segundo_nombre" type="text" id="formGroup" placeholder="Segundo nombre" value="{{$datosUsuario['segundo_nombre']}}">
+                <input class="form-control" name="segundo_nombre" type="text" id="formGroup" placeholder="Segundo nombre" value="{{$datosUsuario['segundo_nombre']}}" readonly>
               </div>
             </div>
             <div class="form-group">
               <label class="col-sm-2 control-label" for="formGroup">Primer Apellido</label>
               <div class="col-sm-4">
-                <input class="form-control" name="primer_apellido" type="text" id="formGroup" placeholder="Primer apellido" value="{{$datosUsuario['primer_apellido']}}">
+                <input class="form-control" name="primer_apellido" type="text" id="formGroup" placeholder="Primer apellido" value="{{$datosUsuario['primer_apellido']}}" readonly>
               </div>
             </div>
             <div class="form-group">
               <label class="col-sm-2 control-label" for="formGroup">Segundo Apellido</label>
               <div class="col-sm-4">
-                <input class="form-control" name="segundo_apellido" type="text" id="formGroup" placeholder="Segundo apellido" value="{{$datosUsuario['segundo_apellido']}}">
+                <input class="form-control" name="segundo_apellido" type="text" id="formGroup" placeholder="Segundo apellido" value="{{$datosUsuario['segundo_apellido']}}" readonly>
               </div>
             </div>
  
