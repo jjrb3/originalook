@@ -72,6 +72,18 @@
     </div>
 </div>
 
+<!-- Modal video -->
+<div class="modal fade ingresar-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <video width="900" autoplay>
+                <source src="recursos/videos/wellive1.mp4" type="video/mp4">
+                Your browser does not support HTML5 video.
+            </video>
+        </div>
+    </div>
+</div>
+<!-- Fin Modal video -->
 
 <!--la otra section -->
 
@@ -94,6 +106,7 @@ Demo Purpose Only
 Change UA-XXXXXXX-X to be your site's ID
  -->
 <script>
+    $('.ingresar-modal').modal();
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
             m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)

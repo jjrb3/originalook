@@ -436,7 +436,7 @@
                                         <th>Rol</th>
                                         <th>telefono</th>
                                         <th>Estado</th>
-                                        <th>Opción</th>
+                                        <!--<th>Opción</th>-->
 
 
                                     </tr>
@@ -470,11 +470,13 @@
                                                             Inactivo
                                                         @endif
                                                     </td>
+													<!--
                                                     <td>
                                                         <button class="btn btn-primary btn-xs" onclick="location.assign('editar-usuario?id={{$lista->id}}')" data-title="Edit" data-toggle="modal" data-target="#edit">
                                                             <span class="fa fa-pencil"></span>
                                                         </button>
                                                     </td>
+													-->
                                                 </tr>
                                             @endforeach
                                         @endif

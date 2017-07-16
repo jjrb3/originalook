@@ -101,8 +101,7 @@
             <p>Buscando lo mejor para nuestros usuarios 
             </p>
             <div>
-                <a href="#" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Registrarse como profesional</a> 
-                <a href="#" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal2-lg">Registrarse como empresa</a>
+                <a href="#" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Registrarse</a> 
             </div>
         </div>
     </div>
@@ -122,55 +121,66 @@
         </button>
       </div>
       <div class="modal-body">
-             <form action="guardar.php" method="POST">
+             <form action="registrarCliente" method="POST">
+					<input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <div class="col-sm-12">
+						<div class="row">
+							<div class="col-sm-4 form-group">
+								<label>Tipo de registro </label><br> 
+								<select class="form-control" id="estado" name="rol" required>
+									<option value="">Seleccione rol</option>
+									<option>Profesional</option>
+									<option>Empresa</option>
+								</select>
+							</div>  
+						</div>  
                         <div class="row">
                             <div class="col-sm-4 form-group">
                                 <label>Primer nombre</label>
-                                <input type="text" name="nombre" placeholder="...." class="form-control">
+                                <input type="text" name="primerNombre" placeholder="...." class="form-control">
                             </div>
                             <div class="col-sm-4 form-group">
                                 <label>Segundo nombre</label>
-                                <input type="text" name="apellido" placeholder="...." class="form-control">
+                                <input type="text" name="segundoNombre" placeholder="...." class="form-control">
                             </div>
                               <div class="col-sm-4 form-group">
                                 <label>Primer apellido</label>
-                                <input type="text" name="direccion" placeholder="...." class="form-control">
+                                <input type="text" name="primerApellido" placeholder="...." class="form-control">
                             </div> 
                         </div>                  
                         <div class="row">
                             <div class="col-sm-6 form-group">
                                 <label>Segundo apellido</label>
-                                <input type="text" name="segundo apellido" placeholder="...." class="form-control">
+                                <input type="text" name="segundoApellido" placeholder="...." class="form-control">
                             </div>      
                             <div class="col-sm-6 form-group">
                                 <label>E-mail</label>
-                                <input type="text" name="E-mail" placeholder="...." class="form-control">
+                                <input type="text" name="email" placeholder="...." class="form-control">
                             </div>  
                         </div>   
                            <div class="row">
                             <div class="col-sm-4 form-group">
                                 <label>E-mail alternativo</label>
-                                <input type="text" name="nombre" placeholder="...." class="form-control">
+                                <input type="text" name="emailAlternativo" placeholder="...." class="form-control">
                             </div>
                             <div class="col-sm-4 form-group">
                                 <label>Celular</label>
-                                <input type="text" name="apellido" placeholder="...." class="form-control">
+                                <input type="text" name="celular" placeholder="...." class="form-control">
                             </div>
                               <div class="col-sm-4 form-group">
                                 <label>Telefono fijo</label>
-                                <input type="text" name="direccion" placeholder="...." class="form-control">
+                                <input type="text" name="telefono" placeholder="...." class="form-control">
                             </div> 
                         </div> 
 
                           <div class="row">
                             <div class="col-sm-4 form-group">
                                 <label>Usuario</label>
-                                <input type="text" name="nombre" placeholder="...." class="form-control">
+                                <input type="text" name="usuario" placeholder="...." class="form-control">
                             </div>
                             <div class="col-sm-4 form-group">
                                 <label>Contraseña</label>
-                                <input type="text" name="apellido" placeholder="...." class="form-control">
+                                <input type="password" name="clave" placeholder="...." class="form-control">
                             </div>
                               <div class="col-sm-4 form-group">
                                 <label>Direccion</label>
@@ -180,22 +190,22 @@
                          <div class="row">
                             <div class="col-sm-4 form-group">
                                 <label>Fecha de nacimiento</label>
-                                <input type="date" name="nombre" placeholder="...." class="form-control">
+                                <input type="date" name="nacimiento" placeholder="...." class="form-control">
                             </div>
                             <div class="col-sm-4 form-group">
                                 <label>Documento</label>
-                                 <select class="form-control" id="estado" name="pais" required>
-                                <option value="" selected>Seleccione doccumento</option>
-                                <option>Cc</option>
-                                <option>Ce</option>
-                                <option>Nit</option>
-                                <option>Pasaporte</option>
-                                <option>Registro civil</option>
+                                 <select class="form-control" id="estado" name="tipoIdentificacion" required>
+                                <option value="">Seleccione doccumento</option>
+                                <option value="2">Cedula Ciudadania</option>
+                                <option value="3">Cedula Extranjera</option>
+                                <option value="4">Pasaporte</option>
+                                <option value="5">Registro Civil</option>
+                                <option value="6">NIT</option>
                                 </select>
                             </div>
                               <div class="col-sm-4 form-group">
                                 <label>No identificación</label>
-                                <input type="text" name="direccion" placeholder="...." class="form-control">
+                                <input type="text" name="identificacion" placeholder="...." class="form-control">
                             </div> 
                         </div> 
 
@@ -203,7 +213,7 @@
                         <div class="row">
                             <div class="col-sm-4 form-group">
                                 <label>Pais </label><br>
-                                 <select class="form-control" id="estado" name="pais" required>
+                                 <select class="form-control" name="pais" required>
                 <option value="" selected>Seleccione Pais</option>
                 <option>Colombia</option>
                 </select>
@@ -224,7 +234,7 @@
   
                            <div class="col-sm-4 form-group">
                                 <label>Dispositivo </label><br> 
-                                <select class="form-control" id="estado" name="genero" required>
+                                <select class="form-control" id="estado" name="marca" required>
                 <option selected>Seleccione marca</option>
                 <option>IOS</option>
                 <option>Android</option>
@@ -232,16 +242,7 @@
                               
                             </div>       
                         </div>                  
-                         <div class="row">
-                            <div class="col-sm-4 form-group">
-                                <label>Rol </label><br> 
-                                <select class="form-control" id="estado" name="genero" required>
-                <option selected>Seleccione rol</option>
-                <option>Profesional</option>
-                <option>Empresa</option>
-                </select>
-                              
-                            </div>      
+                             
                         </div> 
 
             

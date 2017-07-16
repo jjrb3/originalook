@@ -103,6 +103,7 @@
 		</p>
 		<div>
 			<a href="#" class="btn btn-primary">Descarga la app</a>
+			<a href="#" class="btn btn-primary" data-toggle="modal" data-target=".ingresar-modal-sm">Ingresar</a>
 		</div>
 	</div>
 </div>
@@ -203,6 +204,39 @@
 <!-- seccion 6 -->
 <!-- fin seccion 6 -->
 
+<div class="modal fade ingresar-modal-sm" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+   <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Ingresar a la plataforma</h5>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="verificarLogin" method="post">
+			<div class="col-sm-12">
+				<div class="row">
+					<input type="hidden" name="_token" value="{{ csrf_token() }}">
+					<div class="col-sm-12 form-group" align="center">
+						<label>Usuario</label>
+						<input type="text" name="usuario" class="form-control" required>
+					</div>
+					<div class="col-sm-12 form-group" align="center">
+						<label>Clave</label>
+						<input type="password" name="clave" class="form-control" required>
+					</div>
+					  <div class="col-sm-6 form-group">
+						<button class="btn btn-primary">Ingresar</button>
+					</div> 
+				</div>    
+			</div>     
+		</form>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- jQuery first, then Tether, then Bootstrap JS. -->
 <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
