@@ -418,73 +418,20 @@
 
   <!-- Indicatodores -->
 
-  <ol class="carousel-indicators">
 
-    <li data-target="#carousel1" data-slide-to="0" class="active"></li>
-
-    <li data-target="#carousel1" data-slide-to="1"></li>
-
-    <li data-target="#carousel1" data-slide-to="2"></li>
-
-  </ol>
 
 
 
   <!-- Contenedor de las imagenes -->
-
-  <div class="carousel-inner" role="listbox">
-
-
-
-    <div class="item active">
-
-      <img src="{{asset('tema_administrador/dist/img/slider/6.jpg')}}" alt="Imagen 3">
-
-      <div class="carousel-caption"></div>
-
+    <br>
+    <div>
+        <video width="900" autoplay>
+        <source src="../recursos/videos/wellive2.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+        </video>
     </div>
 
 
-
-    <div class="item">
-
-      <img src="{{asset('tema_administrador/dist/img/slider/6.jpg')}}" alt="Imagen 3">
-
-      <div class="carousel-caption"></div>
-
-    </div>
-
-
-
-    <div class="item">
-
-      <img src="{{asset('tema_administrador/dist/img/slider/6.jpg')}}" alt="Imagen 3">
-
-      <div class="carousel-caption"> </div>
-
-    </div>
-
-  </div>
-
-
-
-  <!-- Controls -->
-
-  <a class="left carousel-control" href="#carousel1" role="button" data-slide="prev">
-
-    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-
-    <span class="sr-only">Anterior</span>
-
-  </a>
-
-  <a class="right carousel-control" href="#carousel1" role="button" data-slide="next">
-
-    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-
-    <span class="sr-only">Siguiente</span>
-
-  </a>
 
 
 
