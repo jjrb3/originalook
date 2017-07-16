@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Originalook</title>
+    <title>Wellive</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="stylesheet" href="{{asset('tema_administrador/bootstrap/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -21,7 +21,7 @@
     <header class="main-header">
         <a href="inicio" class="logo">
             <span class="logo-mini"><b>P</b>A</span>
-            <span class="logo-lg"><b>Panel</b> Originalook</span>
+            <span class="logo-lg"><b>Panel</b> Wellive</span>
         </a>
         <nav class="navbar navbar-static-top">
             <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
@@ -146,7 +146,7 @@
         <div class="pull-right hidden-xs">
             <b>Version</b> 10.2.1
         </div>
-        <strong>Copyright &copy; 2017 <a href="#">Originalook</a>.</strong>
+        <strong>Copyright &copy; 2017 <a href="#">Wellive</a>.</strong>
     </footer>
     <div class="control-sidebar-bg"></div>
 </div>

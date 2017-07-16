@@ -36,7 +36,7 @@ class MenuController extends Controller
 
             ($idRol == 4 || $idRol == 2 ? '<li class="treeview"><a href="empleados"><i class="fa fa-users"></i> <span>Empleados</span></a></li>' : '') .
 
-            ($idRol != 2 ? '<li><a href="servicios"><i class="fa fa-th"></i> <span>Mis Servicios</span></a></li>' : '<li><a href="categoria"><i class="fa fa-th"></i> <span>Categoria</span></a></li>') .
+            #($idRol != 2 ? '<li><a href="servicios"><i class="fa fa-th"></i> <span>Mis Servicios</span></a></li>' : '<li><a href="categoria"><i class="fa fa-th"></i> <span>Categoria</span></a></li>') .
 
             '<li class="treeview">
                 <a href="solicitudes">

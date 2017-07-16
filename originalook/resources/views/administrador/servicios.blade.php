@@ -14,7 +14,7 @@
 
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Originalook</title>
+  <title>Wellive</title>
 
   <!-- Tell the browser to be responsive to screen width -->
 
@@ -76,7 +76,7 @@
 
       <!-- logo for regular state and mobile devices -->
 
-      <span class="logo-lg"><b>Panel</b> Originalook</span>
+      <span class="logo-lg"><b>Panel</b> Wellive</span>
 
     </a>
 
@@ -366,7 +366,7 @@
 
         Servicios
 
-        <small>Originalook</small>
+        <small>Wellive</small>
 
       </h1>
 
@@ -396,7 +396,7 @@
 
       <div class="col-md-12">
 
-      <center> <h4 class="widget-title">Mis servicios originalook</h4>
+      <center> <h4 class="widget-title">Mis servicios Wellive</h4>
 
       <p>Agrega, edita o elimina los servicios que tu ofreces.</p></center>
 
@@ -674,7 +674,7 @@
 
     </div>
 
-    <strong>Copyright &copy; 2017 <a href="#">Originalook</a>.</strong>
+    <strong>Copyright &copy; 2017 <a href="#">Wellive</a>.</strong>
 
   </footer>
 

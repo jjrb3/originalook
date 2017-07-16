@@ -14,7 +14,7 @@
 
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Originalook</title>
+  <title>Wellive</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
   <!-- Tell the browser to be responsive to screen width -->
 
@@ -76,7 +76,7 @@
 
 	  <!-- logo for regular state and mobile devices -->
 
-	  <span class="logo-lg"><b>Panel</b> Originalook</span>
+	  <span class="logo-lg"><b>Panel</b> Wellive</span>
 
 	</a>
 
@@ -366,7 +366,7 @@
 
 		Portafolio
 
-		<small>Originalook</small>
+		<small>Wellive</small>
 
 	  </h1>
 
@@ -448,7 +448,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <center>
-                                        <h4 class="widget-title">Mis Imagenes Originalook</h4>
+                                        <h4 class="widget-title">Mis Imagenes Wellive</h4>
                                         <p>Sube tus imagenes para que los usuarios puedan ver tu trabajo.</p>
                                     </center>
                                 </div>
@@ -549,7 +549,7 @@
 
 	</div>
 
-	<strong>Copyright &copy; 2017 <a href="#">Originalook</a>.</strong>
+	<strong>Copyright &copy; 2017 <a href="#">Wellive</a>.</strong>
 
   </footer>
 

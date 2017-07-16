@@ -14,7 +14,7 @@
 
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Originalook</title>
+  <title>Wellive</title>
 
   <!-- Tell the browser to be responsive to screen width -->
 
@@ -76,7 +76,7 @@
 
       <!-- logo for regular state and mobile devices -->
 
-      <span class="logo-lg"><b>Panel</b> Originalook</span>
+      <span class="logo-lg"><b>Panel</b> Wellive</span>
 
     </a>
 
@@ -366,7 +366,7 @@
 
         Inicio
 
-        <small>Originalook</small>
+        <small>Wellive</small>
 
       </h1>
 
@@ -477,7 +477,7 @@
 
     </div>
 
-    <strong>Copyright &copy; 2017 <a href="#">Originalook</a>.</strong>
+    <strong>Copyright &copy; 2017 <a href="#">Wellive</a>.</strong>
 
   </footer>
 
